@@ -96,7 +96,7 @@ const Header = () => {
                 className="btn-download"
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://github.com/userHarpreet/userHarpreet.github.io/raw/master/src/data/file/MyResume.pdf"
+                href="https://drive.google.com/file/d/1fvaagR0KHZsGZZvZJWqNL4mRsfLm-ThC/view"
               >
                 Resume
               </a>
