@@ -16,7 +16,7 @@ export const portfolios = {
       description:
         "An AI based high security number plate detection and optical character recognition system.",
       demo: "https://mbeded.systems",
-      source: "https://github.com/userHarpreet/anprBasic",
+      source: "https://github.com/userHarpreet/lpr_dev",
       tools: ["Machine Learning", "OCR", "Yolo-world"],
     },
     {
