@@ -84,7 +84,7 @@ const Header = () => {
             </li>
             <li>
               <a
-                target="__blank"
+                // target="__blank"
                 rel="noopener noreferrer"
                 href="https://write.harpreet.me"
               >
