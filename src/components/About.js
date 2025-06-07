@@ -14,15 +14,12 @@ const About = () => {
         <div className="about">
           <div className="about-details">
             <p>
-              I'm a mad scientist from Chandigarh, India.
-              Always up to some high-tech shenanigans.
-              Picture me as the puppet master of microcontrollers, or better yet,
-              the brain surgeon for gadgets, programming them to jazz up the most mundane tasks with a dash of flair.
-              My mission? To craft gadgets so magical they make users exclaim, "Wow, did that just happen?"
-              thanks to a sprinkle of IoT wizardry. After testing the waters in the market,
-              I took the plunge and started my own venture—mBEDed μSystems. Now,
-              I'm living the dream, whipping up quirky tech solutions with my eclectic team,
-              keeping the job scene buzzing with excitement.
+              A Tech Artisan from Chandigarh(IN) and the founder of mBEDed μSystems, 
+              where we brew quirky tech with serious skill. 
+              Think of me as a brain surgeon for gadgets — designing custom hardware, programming microcontrollers, 
+              and adding a splash of IoT magic to everyday problems. 
+              I turn ideas into devices that make people say, “Wait… did that just happen?” 
+              Whether it’s a clever hack or a full-blown product, I’m here to make tech feel like wizardry.
             </p>
             <div className="about-action">
               <Button
