@@ -169,6 +169,12 @@ body {
   transform: translateY(-1px);
 }
 
+.social-btn svg {
+  width: 20px !important;
+  height: 20px !important;
+  fill: currentColor;
+}
+
 /* Main content responsive styles */
 .main-container {
   padding: 0 10rem;

@@ -35,50 +35,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Smooth scrolling for navigation links
+// Navigation with smooth scrolling and active state
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('a[href^="#"]');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            
-            // Skip if it's just a hash (#) without target
-            if (href === '#' || href === '') {
-                e.preventDefault();
-                return;
-            }
-            
-            e.preventDefault();
-            
-            const targetId = href.substring(1);
-            const targetElement = document.getElementById(targetId);
-            
-            if (targetElement) {
-                const header = document.querySelector('.header');
-                const headerHeight = header ? header.offsetHeight : 0;
-                const targetPosition = targetElement.offsetTop - headerHeight - 20;
-                
-                window.scrollTo({
-                    top: Math.max(0, targetPosition),
-                    behavior: 'smooth'
-                });
-                
-                // Update URL hash without jumping
-                history.pushState(null, null, href);
-            }
-        });
-    });
-});
-
-// Add active state to navigation links based on scroll position
-document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
+
+    function smoothScroll(targetId) {
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            const header = document.querySelector('.header') || document.querySelector('header');
+            const headerHeight = header ? header.offsetHeight : 80;
+            const targetPosition = targetElement.offsetTop - headerHeight - 20;
+            
+            window.scrollTo({
+                top: Math.max(0, targetPosition),
+                behavior: 'smooth'
+            });
+        }
+    }
+
     function updateActiveNavLink() {
         let currentSection = '';
-        const scrollPosition = window.scrollY + 100; // Offset for header
+        const scrollPosition = window.scrollY + 150;
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -102,7 +80,29 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
+    // Add click event listeners to navigation links
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            // Skip if it's just a hash (#) without target
+            if (href === '#' || href === '') {
+                e.preventDefault();
+                return;
+            }
+            
+            e.preventDefault();
+            const targetId = href.substring(1);
+            
+            // Immediately update active state
+            navLinks.forEach(navLink => navLink.classList.remove('active'));
+            this.classList.add('active');
+            
+            smoothScroll(targetId);
+        });
+    });
+
     // Throttle scroll events for better performance
     let scrollTimeout;
     window.addEventListener('scroll', function() {
@@ -119,6 +119,10 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const githubBtn = document.getElementById('github-btn');
     const linkedinBtn = document.getElementById('linkedin-btn');
+    const whatsappBtn = document.getElementById('WhatsApp-btn') || document.getElementById('whatsapp-btn');
+    
+    // Also handle WhatsApp links in footer
+    const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
     
     if (githubBtn) {
         githubBtn.addEventListener('click', function() {
@@ -131,6 +135,20 @@ document.addEventListener('DOMContentLoaded', function() {
             window.open('https://www.linkedin.com/in/userHarpreet', '_blank');
         });
     }
+    
+    if (whatsappBtn) {
+        whatsappBtn.addEventListener('click', function() {
+            window.open('https://wa.me/+919478089291', '_blank');
+        });
+    }
+    
+    // Ensure WhatsApp links work properly
+    whatsappLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.open(this.href, '_blank');
+        });
+    });
 });
 
 // Project card interactions
@@ -140,7 +158,6 @@ document.addEventListener('DOMContentLoaded', function() {
     projectCards.forEach(card => {
         card.addEventListener('click', function() {
             // You can add project details modal or navigation here
-            console.log('Project card clicked:', card.querySelector('h3').textContent);
         });
     });
 });
